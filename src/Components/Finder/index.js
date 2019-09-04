@@ -10,16 +10,26 @@ class Finder extends Component {
   render() {
     return (
       <Form>
+        <strong>Tell us what you want to find in a home!</strong>
         <Form.Field>
-          <label>First Name</label>
-          <input placeholder="First Name" />
+          <label>What city do you want to look in?</label>
+          <input placeholder="City" />
         </Form.Field>
         <Form.Field>
-          <label>Last Name</label>
-          <input placeholder="Last Name" />
+          <label>What price do you want to be at?</label>
+          <input placeholder="Price" />
         </Form.Field>
         <Form.Field>
-          <Checkbox label="I agree to the Terms and Conditions" />
+          <label>How many bedrooms do you want?</label>
+          <input placeholder="Bedrooms" />
+        </Form.Field>
+        <Form.Field>
+          <label>How many bathrooms do you want?</label>
+          <input placeholder="Bathrooms" />
+        </Form.Field>
+        <Form.Field>
+          <label>How many stories do you want?</label>
+          <input placeholder="Stories" />
         </Form.Field>
         <Button type="submit">Submit</Button>
       </Form>
