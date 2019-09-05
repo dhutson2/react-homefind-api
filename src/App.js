@@ -9,14 +9,19 @@ class App extends Component {
     super();
     this.state = {
       houses: [],
-      priceRange: []
+      city: "",
+      price: "",
+      bedrooms: "",
+      bathrooms: "",
+      stories: ""
     };
   }
 
   getHouses = async () => {
     try {
       const houses = await fetch(
-        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4"
+        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4" +
+          "&$select=LivingArea"
       );
       const housesJson = await houses.json();
       return housesJson;
@@ -26,15 +31,25 @@ class App extends Component {
     }
   };
 
-  getPriceRange = async () => {
+  // getPriceRange = async () => {
+  //   try {
+  //     const prices = await fetch(
+  //       "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4&$filter=ListPrice%20gt%20900000"
+  //     );
+  //     const pricesJson = await prices.json();
+  //     return pricesJson;
+  //   } catch (err) {
+  //     console.log(err, "getPriceRange error");
+  //     return err;
+  //   }
+  // };
+
+  // #TODO: Make handle search submit button
+  handleSearchSubmit = data => {
     try {
-      const prices = await fetch(
-        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4&$filter=ListPrice%20gt%20900000"
-      );
-      const pricesJson = await prices.json();
-      return pricesJson;
+      console.log(data, "<-- search submit data");
     } catch (err) {
-      console.log(err, "getPriceRange error");
+      console.log(err, "<--handleSearchSubmit error");
       return err;
     }
   };
@@ -46,18 +61,18 @@ class App extends Component {
         houses: houseData
       });
     });
-    this.getPriceRange().then(priceData => {
-      console.log("Price data:", priceData);
-      this.setState({
-        priceRange: priceData
-      });
-    });
+    // this.getPriceRange().then(priceData => {
+    //   console.log("Price data:", priceData);
+    //   this.setState({
+    //     priceRange: priceData
+    //   });
+    // });
   }
 
   render() {
     return (
       <div>
-        <Finder />
+        <Finder searchSubmit={this.handleSearchSubmit} />
         <ResultsList />
       </div>
     );
