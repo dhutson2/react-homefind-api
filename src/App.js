@@ -45,9 +45,16 @@ class App extends Component {
   // };
 
   // #TODO: Make handle search submit button
-  handleSearchSubmit = data => {
+  handleSearchSubmit = async data => {
     try {
-      console.log(data, "<-- search submit data");
+      console.log(data.city, "<-- search submit data");
+      const search = await fetch(
+        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4" +
+          "&$filter=Stories%20eq%20" +
+          data.stories
+      );
+      const parsedSearch = await search.json();
+      console.log(parsedSearch, "<-- parsed home search");
     } catch (err) {
       console.log(err, "<--handleSearchSubmit error");
       return err;
