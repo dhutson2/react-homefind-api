@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import { Button, Checkbox, Form, List } from "semantic-ui-react";
 import "./finder.css";
+import ResultsList from "../ResultList/index";
 
 class Finder extends Component {
   constructor(props) {
@@ -26,55 +27,58 @@ class Finder extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSearchSubmit}>
-        <strong>Tell us what you want to find in a home!</strong>
-        <Form.Field>
-          <label>What city do you want to look in?</label>
-          <input
-            type="text"
-            name="city"
-            id="city"
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>What price do you want to be at?</label>
-          <input
-            type="text"
-            name="price"
-            id="price"
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>How many bedrooms do you want?</label>
-          <input
-            type="text"
-            name="bedrooms"
-            id="bedrooms"
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>How many bathrooms do you want?</label>
-          <input
-            type="text"
-            name="bathrooms"
-            id="bathrooms"
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>How many stories do you want?</label>
-          <input
-            type="text"
-            name="stories"
-            id="stories"
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Button type="submit">Submit</Button>
-      </Form>
+      <div>
+        <Form onSubmit={this.handleSearchSubmit}>
+          <strong>Tell us what you want to find in a home!</strong>
+          <Form.Field>
+            <label>What city do you want to look in?</label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>What price do you want to be at?</label>
+            <input
+              type="text"
+              name="price"
+              id="price"
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>How many bedrooms do you want?</label>
+            <input
+              type="text"
+              name="bedrooms"
+              id="bedrooms"
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>How many bathrooms do you want?</label>
+            <input
+              type="text"
+              name="bathrooms"
+              id="bathrooms"
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>How many stories do you want?</label>
+            <input
+              type="text"
+              name="stories"
+              id="stories"
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Button type="submit">Submit</Button>
+        </Form>
+        <ResultsList houses={this.state.houses} />
+      </div>
     );
   }
 }

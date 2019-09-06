@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import Finder from "./Components/Finder/index";
 import ResultsList from "./Components/ResultList/index";
@@ -8,28 +8,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      houses: [],
-      city: "",
-      price: "",
-      bedrooms: "",
-      bathrooms: "",
-      stories: ""
+      houses: []
     };
   }
-
-  getHouses = async () => {
-    try {
-      const houses = await fetch(
-        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4" +
-          "&$select=LivingArea"
-      );
-      const housesJson = await houses.json();
-      return housesJson;
-    } catch (err) {
-      console.log(err, "getHouses error");
-      return err;
-    }
-  };
 
   // getPriceRange = async () => {
   //   try {
@@ -44,14 +25,11 @@ class App extends Component {
   //   }
   // };
 
-  // #TODO: Make handle search submit button
   handleSearchSubmit = async data => {
     try {
-      console.log(data.city, "<-- search submit data");
       const search = await fetch(
         "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4" +
-          "&$filter=Stories%20eq%20" +
-          data.stories
+          "&$filter=Stories%20eq%202"
       );
       const parsedSearch = await search.json();
       console.log(parsedSearch, "<-- parsed home search");
@@ -61,26 +39,29 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {
-    this.getHouses().then(houseData => {
-      console.log("Houses data: ", houseData);
-      this.setState({
-        houses: houseData
-      });
-    });
-    // this.getPriceRange().then(priceData => {
-    //   console.log("Price data:", priceData);
-    //   this.setState({
-    //     priceRange: priceData
-    //   });
-    // });
-  }
+  // componentDidMount() {
+  //   this.getHouses().then(houseData => {
+  //     this.setState({
+  //       houses: houseData
+  //     });
+  //     console.log(this.state, "<--state in main app");
+  //   });
+  //   // this.getPriceRange().then(priceData => {
+  //   //   console.log("Price data:", priceData);
+  //   //   this.setState({
+  //   //     priceRange: priceData
+  //   //   });
+  //   // });
+  // }
 
   render() {
     return (
       <div>
-        <Finder searchSubmit={this.handleSearchSubmit} />
-        <ResultsList />
+        <Finder
+          searchSubmit={this.handleSearchSubmit}
+          getHouses={this.getHouses}
+          houses={this.state.houses}
+        />
       </div>
     );
   }
