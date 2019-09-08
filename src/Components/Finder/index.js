@@ -30,52 +30,59 @@ class Finder extends Component {
       <div>
         <Form onSubmit={this.handleSearchSubmit}>
           <strong>Tell us what you want to find in a home!</strong>
-          <Form.Field>
-            <label>What city do you want to look in?</label>
+          <Form.Field id="find-field">
+            <label className="label">What city do you want to look in?</label>
             <input
               type="text"
               name="city"
               id="city"
               onChange={this.handleChange}
+              className="input"
             />
           </Form.Field>
-          <Form.Field>
-            <label>What price do you want to be at?</label>
+          <Form.Field id="find-field">
+            <label className="label">What price do you want to be at?</label>
             <input
               type="text"
               name="price"
               id="price"
               onChange={this.handleChange}
+              className="input"
             />
           </Form.Field>
-          <Form.Field>
-            <label>How many bedrooms do you want?</label>
+          <Form.Field id="find-field">
+            <label className="label">How many bedrooms do you want?</label>
             <input
               type="text"
               name="bedrooms"
               id="bedrooms"
               onChange={this.handleChange}
+              className="input"
             />
           </Form.Field>
-          <Form.Field>
-            <label>How many bathrooms do you want?</label>
+          <Form.Field id="find-field">
+            <label className="label">How many bathrooms do you want?</label>
             <input
               type="text"
               name="bathrooms"
               id="bathrooms"
               onChange={this.handleChange}
+              className="input"
             />
           </Form.Field>
-          <Form.Field>
-            <label>How many stories do you want?</label>
+          <Form.Field id="find-field">
+            <label className="label">How many stories do you want?</label>
             <input
               type="text"
               name="stories"
               id="stories"
               onChange={this.handleChange}
+              className="input"
             />
           </Form.Field>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="buttons">
+            Submit
+          </Button>
         </Form>
         <ResultsList houses={this.state.houses} />
       </div>
