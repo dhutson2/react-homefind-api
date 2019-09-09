@@ -11,7 +11,8 @@ class ResultsList extends Component {
       price: "",
       bedrooms: "",
       bathrooms: "",
-      stories: ""
+      stories: "",
+      submitted: false
     };
   }
 
@@ -26,10 +27,15 @@ class ResultsList extends Component {
       this.setState(
         {
           houses: housesJson.value,
-          city: this.props.city
+          city: this.props.city,
+          price: this.props.price,
+          bedrooms: this.props.bedrooms,
+          bathrooms: this.props.bathrooms,
+          stories: this.props.stories,
+          submitted: true
         },
         () => {
-          console.log(this.state, "<-- state in results list");
+          console.log(this.state, "<-- state in results list after submit");
         }
       );
     } catch (err) {

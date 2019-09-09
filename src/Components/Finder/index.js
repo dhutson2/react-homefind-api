@@ -17,6 +17,29 @@ class Finder extends Component {
     };
   }
 
+  getHouses = async () => {
+    try {
+      const houses = await fetch(
+        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4" +
+          "&$filter=contains(City, 'Potrero')"
+      );
+      const housesJson = await houses.json();
+      console.log(housesJson, "<--houses json");
+      this.setState(
+        {
+          houses: housesJson.value,
+          city: this.props.city
+        },
+        () => {
+          console.log(this.state, "<-- state in results list");
+        }
+      );
+    } catch (err) {
+      console.log(err, "getHouses error");
+      return err;
+    }
+  };
+
   handleSearchSubmit = e => {
     e.preventDefault();
     this.setState({
@@ -36,6 +59,8 @@ class Finder extends Component {
           <ResultsList
             houses={this.state.houses}
             handleChange={this.handleChange}
+            gethouses={this.getHouses}
+            {...this.state}
           />
         ) : (
           <Form onSubmit={this.handleSearchSubmit}>
