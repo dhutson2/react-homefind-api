@@ -17,21 +17,20 @@ class Finder extends Component {
     };
   }
 
-  getHouses = async () => {
+  getHouses = async e => {
+    e.preventDefault();
     try {
-      const houses = await fetch(
-        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4" +
-          "&$filter=contains(City, 'Potrero')"
-      );
-      const housesJson = await houses.json();
-      console.log(housesJson, "<--houses json");
+      // const houses = await fetch(
+      //   `https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4&$filter=Stories%20eq%20${this.state.stories}`
+      // );
+      // const housesJson = await houses.json();
       this.setState(
         {
-          houses: housesJson.value,
-          city: this.props.city
+          // houses: housesJson.value,
+          submitted: true
         },
         () => {
-          console.log(this.state, "<-- state in results list");
+          console.log(this.state, "<-- state in finder after submit");
         }
       );
     } catch (err) {
@@ -40,13 +39,13 @@ class Finder extends Component {
     }
   };
 
-  handleSearchSubmit = e => {
-    e.preventDefault();
-    this.setState({
-      submitted: true
-    });
-    console.log(this.state, "<-- state in finder after submit");
-  };
+  // handleSearchSubmit = e => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     submitted: true
+  //   });
+  //   console.log(this.state, "<-- state in finder after submit");
+  // };
 
   handleChange = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
@@ -63,7 +62,7 @@ class Finder extends Component {
             {...this.state}
           />
         ) : (
-          <Form onSubmit={this.handleSearchSubmit}>
+          <Form onSubmit={this.getHouses}>
             <strong>Tell us what you want to find in a home!</strong>
             <Form.Field id="find-field">
               <label className="label">What city do you want to look in?</label>
@@ -76,7 +75,9 @@ class Finder extends Component {
               />
             </Form.Field>
             <Form.Field id="find-field">
-              <label className="label">What price do you want to be at?</label>
+              <label className="label">
+                What is the highest price you would consider?
+              </label>
               <input
                 type="text"
                 name="price"
