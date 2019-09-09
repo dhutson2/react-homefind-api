@@ -3,11 +3,11 @@ import { List } from "semantic-ui-react";
 import "./results.css";
 
 class ResultsList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       houses: [],
-      city: "Denver",
+      city: "",
       price: "",
       bedrooms: "",
       bathrooms: "",
@@ -15,21 +15,18 @@ class ResultsList extends Component {
     };
   }
 
-  handleSearchSubmit = e => {
-    e.preventDefault();
-    return this.props.searchSubmit(this.state);
-  };
-
   getHouses = async () => {
     try {
       const houses = await fetch(
-        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4"
+        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4" +
+          "&$filter=contains(City, 'Potrero')"
       );
       const housesJson = await houses.json();
       console.log(housesJson, "<--houses json");
       this.setState(
         {
-          houses: housesJson.value
+          houses: housesJson.value,
+          city: this.props.city
         },
         () => {
           console.log(this.state, "<-- state in results list");

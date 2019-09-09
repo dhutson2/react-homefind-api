@@ -25,19 +25,19 @@ class App extends Component {
   //   }
   // };
 
-  handleSearchSubmit = async data => {
-    try {
-      const search = await fetch(
-        "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4" +
-          "&$filter=Stories%20eq%202"
-      );
-      const parsedSearch = await search.json();
-      console.log(parsedSearch, "<-- parsed home search");
-    } catch (err) {
-      console.log(err, "<--handleSearchSubmit error");
-      return err;
-    }
-  };
+  // handleSearchSubmit = async data => {
+  //   try {
+  //     const search = await fetch(
+  //       "https://api.bridgedataoutput.com/api/v2/OData/test/Property?access_token=f947e577f8d86995ab127ed14e2ebcb4" +
+  //         "&$filter=Stories%20eq%202"
+  //     );
+  //     const parsedSearch = await search.json();
+  //     console.log(parsedSearch, "<-- parsed home search");
+  //   } catch (err) {
+  //     console.log(err, "<--handleSearchSubmit error");
+  //     return err;
+  //   }
+  // };
 
   // componentDidMount() {
   //   this.getHouses().then(houseData => {
@@ -57,11 +57,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Finder
-          searchSubmit={this.handleSearchSubmit}
-          getHouses={this.getHouses}
-          houses={this.state.houses}
-        />
+        <Finder getHouses={this.getHouses} houses={this.state.houses} />
       </div>
     );
   }
