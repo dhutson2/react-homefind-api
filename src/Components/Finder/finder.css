@@ -1,37 +1,37 @@
 body {
-    background-color: #282c34;
+  background-color: #282c34;
 }
 
-Form {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(206, 206, 206);
-    padding: .3rem;
-    max-width: 35rem;
-    width: 30rem;
-    margin: 3rem auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: .3rem .3rem;
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(206, 206, 206);
+  padding: 0.3rem;
+  max-width: 35rem;
+  width: 30rem;
+  margin: 3rem auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.3rem 0.3rem;
 }
 
 #find-field {
-    margin: 10px;
+  margin: 10px;
 }
 
 .buttons {
-    margin: 5px;
-    width: 5rem;
-    padding: 10px;
-    border-radius: 10%;
+  margin: 5px;
+  width: 5rem;
+  padding: 10px;
+  border-radius: 10%;
 }
 
 .label {
-    padding-right: 15px;
+  padding-right: 15px;
 }
 
 .input {
-    display: flex;
-    padding: 5px;
-    width: 10rem;
-    margin-top: 10px;
+  display: flex;
+  padding: 5px;
+  width: 10rem;
+  margin-top: 10px;
 }
