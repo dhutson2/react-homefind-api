@@ -4,13 +4,23 @@
     background-color: rgb(206, 206, 206);
     padding: .3rem;
     max-width: 35rem;
-    width: 25rem;
+    width: 40rem;
     margin: 3rem auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: .3rem .3rem;
 }
 
 .houseImages {
-    max-width: 23rem;
-    max-height: 23rem;
+    max-width: 33rem;
+    max-height: 33rem;
+}
+
+#item {
+    margin: 15px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    font-weight: 600
 }

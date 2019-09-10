@@ -84,8 +84,10 @@ class ResultsList extends Component {
         <List.Item>
           {/* <Image avatar src="/images/avatar/small/rachel.png" /> */}
           <List.Content>
-            <List.Header as="a">Here is what we found!</List.Header>
-            <List.Description>
+            <List.Header as="a" className="header">
+              Here is what we found!
+            </List.Header>
+            <List.Description id="item">
               All of these houses have {this.state.bedrooms} bedrooms,
               {this.state.bathrooms} bathrooms, and are {this.state.stories}{" "}
               stories.
@@ -95,10 +97,10 @@ class ResultsList extends Component {
         <List.Item>
           {/* <Image avatar src="/images/avatar/small/rachel.png" /> */}
           <List.Content>
-            <List.Header as="a">
+            <List.Header as="a" className="header">
               City and listing price: (less than ${this.state.price})
             </List.Header>
-            <List.Description>{houseCityAndPrice}</List.Description>
+            <List.Description id="item">{houseCityAndPrice}</List.Description>
           </List.Content>
         </List.Item>
       </List>
