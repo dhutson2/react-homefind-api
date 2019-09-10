@@ -8,7 +8,7 @@ class Finder extends Component {
     super(props);
     this.state = {
       houses: [],
-      city: "",
+      zip: "",
       price: "",
       bedrooms: "",
       bathrooms: "",
@@ -65,11 +65,13 @@ class Finder extends Component {
           <Form onSubmit={this.getHouses}>
             <strong>Tell us what you want to find in a home!</strong>
             <Form.Field id="find-field">
-              <label className="label">What city do you want to look in?</label>
+              <label className="label">
+                What zip code do you want to look around?
+              </label>
               <input
                 type="text"
-                name="city"
-                id="city"
+                name="zip"
+                id="zip"
                 onChange={this.handleChange}
                 className="input"
               />

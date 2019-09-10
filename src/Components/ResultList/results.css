@@ -9,3 +9,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: .3rem .3rem;
 }
+
+.houseImages {
+    max-width: 23rem;
+    max-height: 23rem;
+}

@@ -7,7 +7,7 @@ class ResultsList extends Component {
     super(props);
     this.state = {
       houses: [],
-      city: "",
+      zip: "",
       price: "",
       bedrooms: "",
       bathrooms: "",
@@ -27,7 +27,7 @@ class ResultsList extends Component {
       this.setState(
         {
           houses: housesJson.value,
-          city: this.props.city,
+          zip: this.props.zip,
           price: this.props.price,
           bedrooms: this.props.bedrooms,
           bathrooms: this.props.bathrooms,
@@ -36,6 +36,10 @@ class ResultsList extends Component {
         },
         () => {
           console.log(this.state, "<-- state in results list after submit");
+          console.log(
+            this.state.houses[0].Media[0].MediaURL,
+            "<-- houses in results"
+          );
         }
       );
     } catch (err) {
@@ -55,11 +59,26 @@ class ResultsList extends Component {
   render() {
     const houseCityAndPrice = this.state.houses.map(house => {
       return (
-        <li>
-          {house.City}, {house.ListPrice}
-        </li>
+        <div>
+          <li>
+            {house.City}, ${house.ListPrice}
+          </li>
+          <img
+            src="https://s3.amazonaws.com/retsly-importd-production/test_data/listings/17.jpg"
+            alt="house"
+            className="houseImages"
+          ></img>
+        </div>
       );
     });
+    // const houseImages = this.state.houses.map(house => {
+    //   return (
+    //     <img
+    //       src="https://s3.amazonaws.com/retsly-importd-production/test_data/listings/17.jpg"
+    //       alt="house"
+    //     ></img>
+    //   );
+    // });
     return (
       <List className="list">
         <List.Item>
@@ -77,7 +96,7 @@ class ResultsList extends Component {
           {/* <Image avatar src="/images/avatar/small/rachel.png" /> */}
           <List.Content>
             <List.Header as="a">
-              City and listing price: (less than {this.state.price})
+              City and listing price: (less than ${this.state.price})
             </List.Header>
             <List.Description>{houseCityAndPrice}</List.Description>
           </List.Content>
