@@ -52,10 +52,6 @@ class ResultsList extends Component {
     this.getHouses();
   }
 
-  // #TODO: Import values from import form on finder to match state here,
-  // Then set params of query to state values
-
-  // #TODO: map out values of different house values into form below
   render() {
     const houseCityAndPrice =
       this.state.houses.length > 0
