@@ -57,20 +57,23 @@ class ResultsList extends Component {
 
   // #TODO: map out values of different house values into form below
   render() {
-    const houseCityAndPrice = this.state.houses.map(house => {
-      return (
-        <div>
-          <li>
-            {house.City}, ${house.ListPrice}
-          </li>
-          <img
-            src="https://s3.amazonaws.com/retsly-importd-production/test_data/listings/17.jpg"
-            alt="house"
-            className="houseImages"
-          ></img>
-        </div>
-      );
-    });
+    const houseCityAndPrice =
+      this.state.houses.length > 0
+        ? this.state.houses.map(house => {
+            return (
+              <div>
+                <li>
+                  {house.City}, ${house.ListPrice} {house.Media.MediaURL}
+                </li>
+                <img
+                  src={house.Media.length > 0 ? house.Media[0].MediaURL : null}
+                  alt="house"
+                  className="houseImages"
+                ></img>
+              </div>
+            );
+          })
+        : null;
     // const houseImages = this.state.houses.map(house => {
     //   return (
     //     <img

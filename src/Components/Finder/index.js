@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Checkbox, Form, List } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import "./finder.css";
 import ResultsList from "../ResultList/index";
 
