@@ -16,6 +16,7 @@ class ResultsList extends Component {
     };
   }
 
+  // function to call Bridge API to get houses based on user specifications
   getHouses = async () => {
     try {
       const houses = await fetch(

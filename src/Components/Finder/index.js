@@ -17,6 +17,7 @@ class Finder extends Component {
     };
   }
 
+  // make call to BridgeAPI to get houses
   getHouses = async e => {
     e.preventDefault();
     try {
@@ -47,6 +48,7 @@ class Finder extends Component {
   //   console.log(this.state, "<-- state in finder after submit");
   // };
 
+  // change values in state
   handleChange = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
   };
